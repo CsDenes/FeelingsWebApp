@@ -12,3 +12,6 @@ class ImageViewSet(viewsets.ModelViewSet):
     # this fetches all the rows of data in the Fish table
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
+
+
+    
