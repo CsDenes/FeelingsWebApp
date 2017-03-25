@@ -19,13 +19,15 @@ from rest_framework import routers
 from FeelREST import views
 
 
-router = routers.DefaultRouter()
+
+#router = routers.DefaultRouter()
 #makes sure that the API endpoints work
-router.register(r'api/FeelREST', views.ImageViewSet)
-admin.autodiscover()
+#router.register(r'api/FeelREST', views.ImageViewSet)
+#admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    #url(r'^', include(router.urls)),
+    url(r'^', include('FeelREST.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

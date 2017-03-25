@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=10000000000)
 
 
 # Create your models here.

@@ -2,3 +2,19 @@
 *.pyc
 
 *.pyc
+
+*.pyc
+
+*.pyc
+
+FeelingsWebApp/__pycache__/__init__.cpython-35.pyc
+
+FeelingsWebApp/__pycache__/settings.cpython-35.pyc
+
+*.xml
+
+*.pyc
+
+*.pyc
+
+FeelingsWebApp/__pycache__/wsgi.cpython-35.pyc
