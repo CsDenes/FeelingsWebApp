@@ -19,6 +19,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from keras.models import model_from_yaml
 import os
+import cv2
 
 module_dir = os.path.dirname(__file__)  # get current directory
 
@@ -56,12 +57,17 @@ def image_list(request, format=None):
 
             with open(file_path, 'wb') as f:
                 f.write(imageData)
-
+            img = cv2.imread(file_path)
+            img = cv2.resize(img, (299, 299))
+            cv2.imwrite(file_path, img)
             img = load_img(file_path)
             testX = img_to_array(img)
+        
             testX = testX.reshape((1,) + testX.shape)
 
             predict = loaded_model.predict(testX)
+            
+            print (predict)
 
             an = float(predict[0][0])
             di = float(predict[0][1])
@@ -70,5 +76,5 @@ def image_list(request, format=None):
             sa = float(predict[0][4])
             su = float(predict[0][5])
 
-            return Response(json.dumps({"an" : an, "di" : di, "fe" : fe, 'ha': ha, "sa" : sa, "su" : su}), status=status.HTTP_201_CREATED)
+            return Response(json.dumps({"an" : an, "di" : di, "fe" : fe, "ha": ha, "sa" : sa, "su" : su}), status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
